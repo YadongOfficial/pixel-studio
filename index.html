@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIXEL STUDIO</title>
+    
+    <!-- Google Fonts: Press Start 2P (font pixel) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <!-- Typed.js for typing effect -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <style>
+        /* * CSS Variables untuk tema 8-bit
+         * Anda bisa mengubah warna di sini untuk mengubah tema keseluruhan.
+         */
+        :root {
+            --pixel-bg: #0a0a0a; /* Latar belakang gelap */
+            --pixel-text: #00ff00; /* Teks hijau neon */
+            --pixel-header: #ffff00; /* Judul kuning neon */
+            --pixel-accent1: #ff00ff; /* Aksen 1 magenta */
+            --pixel-accent2: #00ffff; /* Aksen 2 cyan */
+            --pixel-border: #ffffff;
+            --pixel-font: 'Press Start 2P', cursive;
+        }
+
+        /* Reset dan dasar halaman */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--pixel-bg);
+            color: var(--pixel-text);
+            font-family: var(--pixel-font);
+            line-height: 1.6;
+            padding: 2rem;
+            /* Efek scanline seperti monitor CRT lama */
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+            background-size: 100% 4px;
+            z-index: 9999;
+            pointer-events: none;
+            animation: scanline 0.2s linear infinite;
+        }
+
+        @keyframes scanline {
+            from { background-position: 0 0; }
+            to { background-position: 0 4px; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Header dan Judul */
+        header {
+            margin-bottom: 3rem;
+        }
+
+        .main-title {
+            font-size: 2.5rem;
+            color: var(--pixel-header);
+            text-shadow: 3px 3px 0px var(--pixel-accent1);
+            margin-bottom: 1rem;
+            height: 80px; /* Beri ruang untuk efek ketik */
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            color: var(--pixel-accent2);
+        }
+
+        /* Tombol Drop NFT */
+        .drop-button {
+            display: inline-block;
+            background-color: var(--pixel-accent1);
+            color: var(--pixel-bg);
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            border: 3px solid var(--pixel-border);
+            box-shadow: 5px 5px 0px var(--pixel-border);
+            transition: all 0.1s ease-in-out;
+            margin-bottom: 4rem;
+        }
+
+        .drop-button:hover {
+            transform: translate(5px, 5px);
+            box-shadow: 0px 0px 0px var(--pixel-border);
+        }
+
+        .drop-button:active {
+            transform: translate(5px, 5px);
+            box-shadow: 0px 0px 0px var(--pixel-border);
+        }
+
+        /* Galeri NFT */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            text-align: left;
+        }
+
+        .nft-card {
+            background-color: #111;
+            border: 3px solid var(--pixel-accent2);
+            padding: 1.5rem;
+            transition: transform 0.2s ease;
+        }
+        
+        .nft-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 0 var(--pixel-accent2);
+        }
+
+        .nft-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            image-rendering: pixelated; /* Membuat gambar terlihat pixelated */
+            border: 3px solid var(--pixel-text);
+            margin-bottom: 1rem;
+        }
+
+        .nft-card h3 {
+            color: var(--pixel-accent1);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .nft-card p {
+            font-size: 0.8rem;
+            color: #ccc; /* Abu-abu terang agar mudah dibaca */
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 3px dashed var(--pixel-text);
+            font-size: 0.8rem;
+        }
+        
+        /* Responsiveness */
+        @media (max-width: 600px) {
+            .main-title {
+                font-size: 1.8rem;
+                height: 60px;
+            }
+            .subtitle {
+                font-size: 0.9rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <!-- Judul dengan efek ketik -->
+            <h1 class="main-title"><span id="typed-title"></span></h1>
+            <p class="subtitle">PIXEL STUDIO ON DRIP!</p>
+        </header>
+
+        <!-- GANTI TAUTAN INI DENGAN LINK DROP NFT ANDA -->
+        <a href="https://drip.haus/pixelstudio" target="_blank" rel="noopener noreferrer" class="drop-button">
+            IKUTI DROP DI SINI!
+        </a>
+
+        <!-- Galeri NFT dimulai di sini -->
+        <div class="gallery-grid">
+
+            <!-- KARTU NFT 1 -->
+            <div class="nft-card">
+                <!-- Ganti 'src' dengan URL gambar NFT Anda -->
+                <img src="https://imgur.com/gallery/pixel-studio-j0YpgUZ" 
+                     alt="Gapura Candi Bentar"
+                     onerror="this.onerror=null;this.src='https://placehold.co/400x400/ff0000/ffffff?text=Error!';">
+                <h3>Gapura Candi Bentar - The Sacred Gate of Bali</h3>
+                <p>This is the Gapura Candi Bentar, the iconic split gateway in Balinese architecture. This symmetrical gate symbolizes the duality of the universe, creating a harmonious balance. It is not merely an entrance but a symbolic portal leading from the outer world to a more sacred, inner space. Own this pixel as your gateway to the beauty and spirituality of the Island of the Gods.</p>
+            </div>
+
+            <!-- KARTU NFT 2 -->
+            <div class="nft-card">
+                <!-- Ganti 'src' dengan URL gambar NFT Anda -->
+                <img src="https://imgur.com/gallery/pixel-studio-azqvTXZ" 
+                     alt="Rumah Selaso Jatuh Kembar"
+                     onerror="this.onerror=null;this.src='https://placehold.co/400x400/ff0000/ffffff?text=Error!';">
+                <h3>Rumah Selaso Jatuh Kembar - The Riau Hall of Deliberation</h3>
+                <p>Featuring the Rumah Selaso Jatuh Kembar, the official traditional house of Riau Province. Unlike a residential home, this building functions as a meeting hall for traditional ceremonies and deliberations. Its name comes from its floor design, which is lower than the main house (selaso means veranda). These pixels celebrate the culture of consensus and the rich ornamentation of Malay art.</p>
+            </div>
+
+            <!-- KARTU NFT 3 -->
+            <div class="nft-card">
+                <!-- Ganti 'src' dengan URL gambar NFT Anda -->
+                <img src="https://imgur.com/gallery/pixel-studio-KBpT7Ir" 
+                     alt="Rumah Gadang"
+                     onerror="this.onerror=null;this.src='https://placehold.co/400x400/ff0000/ffffff?text=Error!';">
+                <h3>Rumah Gadang - The Crown of Minangkabau</h3>
+                <p>Introducing the Rumah Gadang from West Sumatra, a symbol of pride for the Minangkabau people. Its dramatic, upward-curving roof gables (gonjong), resembling buffalo horns, make it one of the most recognizable architectural forms in the world. This house is the center of life in the Minang matrilineal culture. These pixels celebrate the grandeur and uniqueness of the Rumah Gadang with sharp detail.</p>
+            </div>
+            
+            <!-- KARTU NFT 4 (Anda bisa copy-paste blok ini untuk menambah NFT) -->
+            <div class="nft-card">
+                <!-- Ganti 'src' dengan URL gambar NFT Anda -->
+                <img src="https://imgur.com/gallery/pixel-studio-NBQYRFw" 
+                     alt="Rumoh Ace"
+                     onerror="this.onerror=null;this.src='https://placehold.co/400x400/ff0000/ffffff?text=Error!';">
+                <h3>Rumoh Aceh - The Grace of the Veranda of Mecca</h3>
+                <p>This piece showcases the Rumoh Aceh (or Krong Bade), a traditional stilt house from Nanggroe Aceh Darussalam. Built high off the ground to avoid floods and wild animals, the house is decorated with intricate carvings laden with Islamic values. The front staircase typically has an odd number of steps. These pixels radiate the artistic and religious beauty of Acehnese architecture.</p>
+            </div>
+
+        </div>
+        <!-- Galeri NFT berakhir di sini -->
+
+        <footer>
+            <p>&copy; 2025 PIXEL STUDIO. Hak Cipta Dilindungi.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Inisialisasi Typed.js untuk efek ketik pada judul
+        document.addEventListener('DOMContentLoaded', function(){
+            var typed = new Typed('#typed-title', {
+                strings: ['GALERI NFT PIXEL STUDIO', 'KOLEKSI 8-BIT', 'SELAMAT DATANG.'],
+                typeSpeed: 70,
+                backSpeed: 40,
+                loop: true,
+                cursorChar: '_',
+            });
+        });
+    </script>
+
+</body>
+</html>
